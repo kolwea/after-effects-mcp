@@ -11,6 +11,17 @@
   <img width="380" height="200" src="https://glama.ai/mcp/servers/@Dakkshin/after-effects-mcp/badge" alt="mcp-after-effects MCP server" />
 </a>
 
+> **websocket-bridge branch.** The file-polling ScriptUI palette is replaced by a dockable CEP panel that runs a
+> WebSocket server on 127.0.0.1. Tools return After Effects results directly (no `get-results` step), each
+> command is one undo step, and commands that change the project must name their comp.
+>
+> Setup: `npm install && npm run install-cep`, restart After Effects, open **Window > Extensions > MCP Bridge**
+> and dock it. The panel writes its port and a per-session token to
+> `~/Library/Application Support/ae-mcp/bridge.json` (mode 600) and deletes it when the panel closes or AE quits.
+> Connections without the token, or with a browser `Origin` header, are refused.
+> AE-side handlers live in `src/scripts/bridge-core.jsx`; the panel is in `cep/`.
+> The sections below describe the original file-polling bridge.
+
 ## Table of Contents
 - [Features](#features)
   - [Core Composition Features](#core-composition-features)

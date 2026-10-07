@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>MCP Bridge</title>
+  <style>
+    :root { --bg: #232323; --fg: #c8c8c8; --dim: #7a7a7a; --ok: #6fbf73; --warn: #d9a441; --err: #d9605a; }
+    html, body { margin: 0; height: 100%; background: var(--bg); color: var(--fg); font: 11px/1.4 -apple-system, "Segoe UI", sans-serif; }
+    body { display: flex; flex-direction: column; padding: 8px; box-sizing: border-box; gap: 6px; }
+    .row { display: flex; align-items: baseline; gap: 6px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--dim); flex: none; align-self: center; }
+    .dot.ok { background: var(--ok); } .dot.warn { background: var(--warn); } .dot.err { background: var(--err); }
+    #status { font-weight: 600; }
+    .meta { color: var(--dim); }
+    #log { flex: 1; overflow-y: auto; margin: 0; padding: 6px; background: #1b1b1b; border-radius: 3px;
+           font: 10px/1.45 ui-monospace, Menlo, monospace; white-space: pre-wrap; word-break: break-all; }
+    #log .err { color: var(--err); }
+  </style>
+</head>
+<body>
+  <div class="row"><span id="dot" class="dot"></span><span id="status">Starting…</span></div>
+  <div class="row meta"><span id="detail"></span></div>
+  <pre id="log"></pre>
+  <script src="main.js"></script>
+</body>
+</html>
